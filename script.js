@@ -21,20 +21,16 @@ function getRandomItem() {
 function openCase() {
   const carousel = document.getElementById("carousel");
   const resultDiv = document.getElementById("result");
+  const history = document.getElementById("history");
+
   carousel.innerHTML = "";
   resultDiv.textContent = "";
 
-  const resultItem = getRandomItem();
-
   const displayItems = [];
-
   for (let i = 0; i < 80; i++) {
-    const randomItem = items[Math.floor(Math.random() * items.length)];
+    const randomItem = getRandomItem();
     displayItems.push(randomItem);
   }
-
-  const targetIndex = 50;
-  displayItems[targetIndex] = resultItem;
 
   displayItems.forEach(item => {
     const img = document.createElement("img");
@@ -44,7 +40,9 @@ function openCase() {
   });
 
   const itemWidth = 110;
+  const targetIndex = 50;
   const offset = (targetIndex * itemWidth) - (600 / 2) + (itemWidth / 2);
+
   carousel.style.transition = "none";
   carousel.style.transform = "translateX(0px)";
 
@@ -53,8 +51,18 @@ function openCase() {
     carousel.style.transform = `translateX(-${offset}px)`;
   }, 100);
 
-
   setTimeout(() => {
+    const finalIndex = Math.floor((offset + 600 / 2 - itemWidth / 2) / itemWidth);
+    const resultItem = displayItems[finalIndex];
     resultDiv.textContent = `Выпало: ${resultItem.name}`;
+
+    const historyItem = document.createElement("div");
+    historyItem.className = "history-item";
+    historyItem.innerHTML = `
+      <img src="images/${resultItem.image}" alt="${resultItem.name}" />
+      <span>${resultItem.name}</span>
+    `;
+    history.prepend(historyItem);
+
   }, 5100);
 }

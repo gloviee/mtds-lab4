@@ -7,13 +7,22 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>Открытие кейса</h1>
-  <div class="case-opener">
-    <div id="carousel" class="carousel"></div>
-    <div class="pointer"></div>
+  <div class="interface-wrapper">
+    <div class="center-box">
+      <h1>Открытие кейса</h1>
+      <div class="case-opener">
+        <div id="carousel" class="carousel"></div>
+        <div class="pointer"></div>
+      </div>
+      <button onclick="openCase()">Открыть кейс</button>
+      <div id="result" class="result"></div>
+    </div>
+
+    <div class="history-panel">
+      <h2>История выпадений</h2>
+      <div id="history" class="history-list"></div>
+    </div>
   </div>
-  <button onclick="openCase()">Открыть кейс</button>
-  <div id="result" class="result"></div>
 
   <script src="script.js"></script>
 </body>
