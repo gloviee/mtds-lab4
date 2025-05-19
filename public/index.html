@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Открытие кейса</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div class="chances-panel">
+    <h3>Drop chances: </h3>
+    <ul>
+        <li><span class="dot common"></span> Common (blue): 70%</li>
+        <li><span class="dot rare"></span> Rare (purple): 20%</li>
+        <li><span class="dot epic"></span> Epic (рink): 7%</li>
+        <li><span class="dot legendary"></span> Ultra rare (yellow): 3%</li>
+    </ul>
+    </div>
+
+
+
+    <div class="interface-wrapper">
+        <div class="center-box">
+        <h1><img src="images/case.png" alt="Кейс" class="case-image"></h1>
+        <div class="case-opener">
+            <div id="carousel" class="carousel"></div>
+            <div class="pointer"></div>
+        </div>
+        <button onclick="openCase()">Open case</button>
+        <div id="result" class="result"></div>
+        </div>
+
+        <div class="history-panel">
+        <h2>Drop history</h2>
+        <div id="history" class="history-list"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

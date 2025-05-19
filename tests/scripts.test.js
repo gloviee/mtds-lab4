@@ -1,4 +1,4 @@
-const { getRandomItem, items } = require('./script');
+const { getRandomItem, items } = require('../public/script');
 
 describe('getRandomItem', () => {
   test('returns an item from items array', () => {
