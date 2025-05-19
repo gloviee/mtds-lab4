@@ -66,3 +66,6 @@ function openCase() {
 
   }, 5100);
 }
+
+
+module.exports = { getRandomItem, items };
