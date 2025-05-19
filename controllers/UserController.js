@@ -1,6 +1,7 @@
 const User = require('../models/User');
 const Item = require('../models/Item');
 
+
 exports.addItemToUser = async (req, res) => {
   try {
     const { username, itemName } = req.body;
@@ -13,6 +14,7 @@ exports.addItemToUser = async (req, res) => {
 
     user.items = user.items || [];
     user.items.push(item._id);
+    
     await user.save();
 
     res.json({ message: 'Item added to user', item: itemName });

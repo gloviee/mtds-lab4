@@ -5,7 +5,7 @@ const {
   getAllUsers,
   deleteAllUsers,
   getUserWithItems
-} = require('../controllers/userController');
+} = require('../controllers/UserController');
 
 router.post('/add-item', addItemToUser);
 router.get('/', getAllUsers);
