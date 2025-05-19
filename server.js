@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const connectDB = require('./database/db');
+const { connectDB } = require('./database/db');
 
 const authRoutes = require('./routes/authRoute');
 const userRoutes = require('./routes/userRoute');
@@ -16,5 +16,10 @@ app.use('/api', authRoutes);
 app.use('/api/user', userRoutes);
 app.use('/api/items', itemRoutes);
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+module.exports = { app };
+
+if (require.main === module) {
+  // Start server only if this file is run directly
+  const PORT = process.env.PORT || 5000;
+  app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+}
