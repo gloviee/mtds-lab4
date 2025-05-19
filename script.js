@@ -9,6 +9,11 @@ const items = [
   { name: "Legendary", image: "item8.png", chance: 3 }
 ];
 
+const openSound = new Audio('sounds/open_case.mp3');
+const finalSound = new Audio('sounds/final.mp3');
+
+const button = document.querySelector("button");
+
 function getRandomItem() {
   const totalWeight = items.reduce((acc, item) => acc + item.chance, 0);
   let rand = Math.random() * totalWeight;
@@ -19,6 +24,12 @@ function getRandomItem() {
 }
 
 function openCase() {
+  openSound.play();
+
+  button.disabled = true;
+  button.style.opacity = "0.5";
+  button.style.cursor = "not-allowed";
+
   const carousel = document.getElementById("carousel");
   const resultDiv = document.getElementById("result");
   const history = document.getElementById("history");
@@ -62,6 +73,12 @@ function openCase() {
     else if (itemIndex <= 5) rarityClass = "purple-bar";
     else if (itemIndex === 6) rarityClass = "pink-bar";
     else if (itemIndex === 7) rarityClass = "yellow-bar";
+
+    finalSound.play()
+
+    button.disabled = false;
+    button.style.opacity = "1";
+    button.style.cursor = "pointer";
 
     const historyItem = document.createElement("div");
     historyItem.className = "history-item";
