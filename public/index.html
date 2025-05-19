@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Открытие кейса</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div class="main_part">
+        <div class="chances-panel">
+            <h3>Drop chances: </h3>
+            <ul>
+                <li><span class="dot common"></span> Common (blue): 70%</li>
+                <li><span class="dot rare"></span> Rare (purple): 20%</li>
+                <li><span class="dot epic"></span> Epic (рink): 7%</li>
+                <li><span class="dot legendary"></span> Ultra rare (yellow): 3%</li>
+            </ul>
+        </div>
+
+        <div class="interface-wrapper">
+            <div class="center-box">
+                <h1><img src="images/case.png" alt="Кейс" class="case-image"></h1>
+                <div class="case-opener">
+                    <div id="carousel" class="carousel"></div>
+                    <div class="pointer"></div>
+                </div>
+                    <button onclick="openCase()">Open case</button>
+                    <div id="result" class="result"></div>
+            </div>
+
+            <div class="history-panel">
+                <div id="login-status" style="margin: 10px; font-weight: bold; text-align: center;"></div>
+                <button id="logout-btn" style="margin-left: 15px; padding: 5px 10px; cursor: pointer;">Log out</button>
+
+                <h2 style="margin-top: 30px;">Drop history</h2>
+                <div id="history" class="history-list"></div>
+
+                <div class="history-buttons">
+                    <button onclick="clearHistory()">Clear history</button>
+                    <button onclick="loadHistory()">Load history</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="register-container" style="display:none;">
+        <div id="register-box">
+            <p class="welcome-text">Welcome! Create your account below to get started 🚀</p>
+            
+            <h2>Register</h2>
+            <div id="register-result"></div>
+            <form id="register-form">
+                <input type="text" name="username" placeholder="Username" required />
+                <input type="email" name="email" placeholder="Email" required />
+                <input type="password" name="password" placeholder="Password" required />
+                <button type="submit">Register</button>
+            </form>
+            <p class="switch-text">Already registered? <a href="#" onclick="showLogin()">Log in</a></p>
+        </div>
+    </div>
+
+    <div id="login-container" style="display: none;">
+        <div id="login-box">
+            <h2>Login</h2>
+            <div id="login-result"></div>
+            <form id="login-form">
+                <input type="text" name="usernameOrEmail" placeholder="Username or Email" required />
+                <input type="password" name="password" placeholder="Password" required />
+                <button type="submit">Login</button>
+            </form>
+            <p class="switch-text">
+                Don't have an account? <a href="#" onclick="showRegister()">Register</a>
+            </p>
+        </div>
+    </div>
+
+    <script src="FuncHandler.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

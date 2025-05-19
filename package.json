@@ -10,10 +10,24 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
-    "jest": "^29.0.0",
-    "jest-environment-jsdom": "^29.7.0"
+    "@testing-library/jest-dom": "^6.6.3",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "mongodb-memory-server": "^10.1.4",
+    "node-fetch": "^3.3.2",
+    "supertest": "^7.1.1"
   },
   "jest": {
-    "testEnvironment": "jsdom"
+    "testEnvironment": "jsdom",
+    "setupFiles": [
+      "<rootDir>/tests/jest.setup.js"
+    ]
+  },
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "body-parser": "^2.2.0",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "mongoose": "^8.15.0"
   }
 }
