@@ -1,6 +1,7 @@
 const User = require('../models/User');
 const Item = require('../models/Item');
 
+
 exports.addItemToUser = async (req, res) => {
   try {
     const { username, itemName } = req.body;
@@ -13,6 +14,7 @@ exports.addItemToUser = async (req, res) => {
 
     user.items = user.items || [];
     user.items.push(item._id);
+    
     await user.save();
 
     res.json({ message: 'Item added to user', item: itemName });
@@ -53,3 +55,20 @@ exports.getUserWithItems = async (req, res) => {
     res.status(500).json({ error: 'Server error' });
   }
 };
+
+exports.clearUserItems = async (req, res) => {
+  try {
+    const username = req.params.username;
+
+    const user = await User.findOne({ username });
+    if (!user) return res.status(404).json({ error: 'User not found' });
+
+    user.items = [];
+    await user.save();
+
+    res.json({ message: `Items cleared for user ${username}` });
+  } catch (err) {
+    res.status(500).json({ error: 'Server error' });
+  }
+};
+

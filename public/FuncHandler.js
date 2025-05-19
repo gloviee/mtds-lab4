@@ -4,7 +4,7 @@ const username = userData.username || '';
 function loadHistory() {
   if (!confirm("Are you sure you want to load past opened cases items?")) return;
 
-  fetch(`http://localhost:5000/api/user/${username}`)
+  return fetch(`http://localhost:5000/api/user/${username}`) 
     .then(res => res.json())
     .then(user => {
       const history = document.getElementById('history');
@@ -33,11 +33,10 @@ function loadHistory() {
     .catch(err => console.error('Error loading history:', err));
 }
 
-
 function clearHistory() {
   if (!confirm("Are you sure you want to clear the history?")) return;
 
-  fetch(`http://localhost:5000/api/user/${username}/items`, {
+  return fetch(`http://localhost:5000/api/user/${username}/items`, {
     method: 'DELETE',
   })
   .then(res => res.json())
@@ -47,6 +46,7 @@ function clearHistory() {
   })
   .catch(err => console.error('Error clearing history:', err));
 }
+
 
 function showRegister() {
   document.getElementById("register-container").style.display = "flex";
@@ -65,3 +65,10 @@ function showLogin() {
   const resultDiv2 = document.getElementById('login-result');
   resultDiv2.textContent = '';
 }
+
+module.exports = {
+  loadHistory,
+  clearHistory,
+  showRegister,
+  showLogin,
+};
