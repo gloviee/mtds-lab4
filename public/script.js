@@ -39,13 +39,16 @@ const finalSound = new Audio('sounds/final.mp3');
 
 const button = document.querySelector("button");
 
-document.getElementById('logout-btn').addEventListener('click', () => {
-  localStorage.removeItem('user');
-  document.getElementById('login-status').textContent = '';
-
-  showLogin();
+document.addEventListener('DOMContentLoaded', () => {
+  const logoutBtn = document.getElementById('logout-btn');
+  if (logoutBtn) {
+    logoutBtn.addEventListener('click', () => {
+      localStorage.removeItem('user');
+      document.getElementById('login-status').textContent = '';
+      showLogin();
+    });
+  }
 });
-
 function showLoginStatus(username, email) {
   const statusDiv = document.getElementById("login-status");
   statusDiv.innerHTML = `
@@ -206,7 +209,12 @@ async function registerUser(event) {
   }
 }
 
-document.getElementById('register-form').addEventListener('submit', registerUser);
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById('register-form');
+  if (form) {
+    form.addEventListener('submit', registerUser);
+  }
+});
 
 async function loginUser(event) {
   event.preventDefault();
@@ -247,4 +255,9 @@ async function loginUser(event) {
   }
 }
 
-document.getElementById('login-form').addEventListener('submit', loginUser);
+document.addEventListener("DOMContentLoaded", () => {
+  const loginForm = document.getElementById('login-form');
+  if (loginForm) {
+    loginForm.addEventListener('submit', loginUser);
+  }
+});
