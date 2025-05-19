@@ -1,31 +1,60 @@
 const items = [
-  "item1.png",
-  "item2.png",
-  "item3.png",
-  "item4.png",
-  "item5.png",
-  "item6.png"
+  { name: "Common 1", image: "item1.png", chance: 70 },
+  { name: "Common 2", image: "item2.png", chance: 70 },
+  { name: "Common 3", image: "item3.png", chance: 70 },
+  { name: "Common 4", image: "item4.png", chance: 70 },
+  { name: "Rare 1", image: "item5.png", chance: 20 },
+  { name: "Rare 2", image: "item6.png", chance: 20 },
+  { name: "Epic", image: "item7.png", chance: 7 },
+  { name: "Legendary", image: "item8.png", chance: 3 }
 ];
+
+function getRandomItem() {
+  const totalWeight = items.reduce((acc, item) => acc + item.chance, 0);
+  let rand = Math.random() * totalWeight;
+  for (let item of items) {
+    if (rand < item.chance) return item;
+    rand -= item.chance;
+  }
+}
 
 function openCase() {
   const carousel = document.getElementById("carousel");
+  const resultDiv = document.getElementById("result");
   carousel.innerHTML = "";
+  resultDiv.textContent = "";
 
-  const images = [];
+  const resultItem = getRandomItem();
 
-  // Заполняем карусель многими элементами
-  for (let i = 0; i < 30; i++) {
-    const img = document.createElement("img");
-    const item = items[Math.floor(Math.random() * items.length)];
-    img.src = `images/${item}`;
-    images.push(item);
-    carousel.appendChild(img);
+  const displayItems = [];
+
+  for (let i = 0; i < 80; i++) {
+    const randomItem = items[Math.floor(Math.random() * items.length)];
+    displayItems.push(randomItem);
   }
 
-  // Случайный сдвиг на X
-  const stopAt = Math.floor(Math.random() * (items.length - 2) + 5);
-  const offset = stopAt * 110; // ширина элемента + отступ
-  carousel.style.transform = `translateX(-${offset}px)`;
+  const targetIndex = 50;
+  displayItems[targetIndex] = resultItem;
 
-  // Можно добавить звук, вспышку, результат и т.п.
+  displayItems.forEach(item => {
+    const img = document.createElement("img");
+    img.src = `images/${item.image}`;
+    img.alt = item.name;
+    carousel.appendChild(img);
+  });
+
+  const itemWidth = 110;
+  const offset = (targetIndex * itemWidth) - (600 / 2) + (itemWidth / 2);
+  carousel.style.transition = "none";
+  carousel.style.transform = "translateX(0px)";
+
+  setTimeout(() => {
+    carousel.style.transition = "transform 5s cubic-bezier(0.1, 0.8, 0.3, 1)";
+    carousel.style.transform = `translateX(-${offset}px)`;
+  }, 100);
+
+
+  setTimeout(() => {
+    resultDiv.textContent = `Выпало: ${resultItem.name}`;
+  }, 5100);
 }
