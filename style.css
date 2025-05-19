@@ -15,6 +15,8 @@ body {
   -webkit-backdrop-filter: blur(8px);
 }
 
+
+
 .interface-wrapper {
   display: flex;
   height: 100vh;
@@ -29,7 +31,7 @@ body {
 }
 
 h1 {
-  margin-bottom: 20px;
+  margin-bottom: 50px;
 }
 
 .case-opener {
@@ -40,6 +42,11 @@ h1 {
   border: 2px solid #444;
   background: #222;
   margin: 0 auto 15px auto;
+}
+
+.case-image {
+  width:: 256px;
+  height: 256px;
 }
 
 .carousel {
@@ -60,11 +67,15 @@ h1 {
   position: absolute;
   top: 0;
   left: 50%;
-  width: 4px;
-  height: 100%;
-  background: red;
   transform: translateX(-50%);
+  width: 20px;
+  height: 100%;
+  background-color: #5bc0ff;
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  z-index: 10;
+  pointer-events: none;
 }
+
 
 button {
   margin-top: 5px; 
@@ -81,7 +92,7 @@ button {
 }
 
 button:hover {
-  background-color: #47aaff; 
+  background-color: #47aaff;
   transform: scale(1.05);
 }
 
@@ -107,6 +118,7 @@ button:hover {
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
 }
+
 
 .history-panel h2 {
   font-size: 1.2rem;
@@ -164,3 +176,64 @@ button:hover {
 .yellow-bar {
   background-color: #ffd700;
 }
+
+.chances-panel {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  width: 230px;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 15px 20px;
+  border-radius: 16px;
+  color: white;
+  font-family: sans-serif;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.chances-panel h3 {
+  margin-top: 0;
+  font-size: 18px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.chances-panel ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.chances-panel li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  font-size: 15px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.dot.common {
+  background-color: #4299e1; /* blue */
+}
+
+.dot.rare {
+  background-color: #9f7aea; /* purple */
+}
+
+.dot.epic {
+  background-color: #ed64a6; /* pink */
+}
+
+.dot.legendary {
+  background-color: #f6e05e; /* yellow */
+}
+
+

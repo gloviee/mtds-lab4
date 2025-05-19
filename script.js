@@ -1,12 +1,12 @@
 const items = [
-  { name: "Common 1", image: "item1.png", chance: 70 },
-  { name: "Common 2", image: "item2.png", chance: 70 },
-  { name: "Common 3", image: "item3.png", chance: 70 },
-  { name: "Common 4", image: "item4.png", chance: 70 },
-  { name: "Rare 1", image: "item5.png", chance: 20 },
-  { name: "Rare 2", image: "item6.png", chance: 20 },
-  { name: "Epic", image: "item7.png", chance: 7 },
-  { name: "Legendary", image: "item8.png", chance: 3 }
+  { name: "AK-47 (common)", image: "item1.png", chance: 70 },
+  { name: "m4a1-s (common)", image: "item2.png", chance: 70 },
+  { name: "mac-10 (common)", image: "item3.png", chance: 70 },
+  { name: "famas (common)", image: "item4.png", chance: 70 },
+  { name: "AK-47 (rare)", image: "item5.png", chance: 20 },
+  { name: "USP-S (rare)", image: "item6.png", chance: 20 },
+  { name: "M4A1 (epic rare)", image: "item7.png", chance: 7 },
+  { name: "Knife (ultra rare)", image: "item8.png", chance: 3 }
 ];
 
 const openSound = new Audio('sounds/open_case.mp3');
@@ -65,8 +65,10 @@ function openCase() {
   setTimeout(() => {
     const finalIndex = Math.floor((offset + 600 / 2 - itemWidth / 2) / itemWidth);
     const resultItem = displayItems[finalIndex];
-    resultDiv.textContent = `Выпало: ${resultItem.name}`;
+    resultDiv.textContent = `Dropped: ${resultItem.name}`;
 
+
+    // Определяем цвет черты по индексу
     const itemIndex = items.findIndex(it => it.name === resultItem.name);
     let rarityClass = "";
     if (itemIndex <= 3) rarityClass = "blue-bar";
@@ -93,5 +95,6 @@ function openCase() {
 
   }, 5100);
 }
+
 
 module.exports = { getRandomItem, items };
