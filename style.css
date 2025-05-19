@@ -2,10 +2,17 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  background: #121212;
+  background: rgba(18, 18, 18, 0.9); 
+  background-image: url('images/bakground.webp'); 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   color: white;
   overflow-x: hidden;
   height: 100vh;
+
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 .interface-wrapper {
@@ -60,10 +67,22 @@ h1 {
 }
 
 button {
-  margin-top: 10px;
-  padding: 10px 20px;
+  margin-top: 5px; 
+  padding: 12px 28px;
   font-size: 16px;
   cursor: pointer;
+
+  background-color: #5bc0ff;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 8px rgba(91, 192, 255, 0.5);
+}
+
+button:hover {
+  background-color: #47aaff; 
+  transform: scale(1.05);
 }
 
 .result {
@@ -78,11 +97,15 @@ button {
   right: 0;
   width: 250px;
   height: 100vh;
-  background: #1a1a1a;
-  border-left: 2px solid #333;
+  background: rgba(18, 18, 18, 0.5);
+  border-left: 2px solid rgba(255, 255, 255, 0.1);
   padding: 20px;
   box-sizing: border-box;
   overflow-y: auto;
+  color: white;
+
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 .history-panel h2 {
@@ -110,4 +133,34 @@ button {
   width: 40px;
   height: 40px;
   object-fit: contain;
+}
+
+.image-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.rarity-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 4px;
+  width: 100%;
+  border-radius: 0 0 4px 4px;
+}
+
+.blue-bar {
+  background-color: #007bff;
+}
+
+.purple-bar {
+  background-color: #a200ff;
+}
+
+.pink-bar {
+  background-color: #ff5ec2;
+}
+
+.yellow-bar {
+  background-color: #ffd700;
 }

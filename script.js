@@ -56,16 +56,25 @@ function openCase() {
     const resultItem = displayItems[finalIndex];
     resultDiv.textContent = `Выпало: ${resultItem.name}`;
 
+    const itemIndex = items.findIndex(it => it.name === resultItem.name);
+    let rarityClass = "";
+    if (itemIndex <= 3) rarityClass = "blue-bar";
+    else if (itemIndex <= 5) rarityClass = "purple-bar";
+    else if (itemIndex === 6) rarityClass = "pink-bar";
+    else if (itemIndex === 7) rarityClass = "yellow-bar";
+
     const historyItem = document.createElement("div");
     historyItem.className = "history-item";
     historyItem.innerHTML = `
-      <img src="images/${resultItem.image}" alt="${resultItem.name}" />
+      <div class="image-wrapper">
+        <img src="images/${resultItem.image}" alt="${resultItem.name}" />
+        <div class="rarity-bar ${rarityClass}"></div>
+      </div>
       <span>${resultItem.name}</span>
     `;
     history.prepend(historyItem);
 
   }, 5100);
 }
-
 
 module.exports = { getRandomItem, items };
