@@ -1,8 +1,12 @@
-const userData = JSON.parse(localStorage.getItem('user') || '{}');
-const username = userData.username || '';
-
 function loadHistory() {
   if (!confirm("Are you sure you want to load past opened cases items?")) return;
+
+  const userData = JSON.parse(localStorage.getItem('user') || '{}');
+  const username = userData.username || '';
+  if (!username) {
+    alert("No user logged in.");
+    return;
+  }
 
   return fetch(`http://localhost:5000/api/user/${username}`) 
     .then(res => res.json())
@@ -33,8 +37,16 @@ function loadHistory() {
     .catch(err => console.error('Error loading history:', err));
 }
 
+
 function clearHistory() {
   if (!confirm("Are you sure you want to clear the history?")) return;
+
+  const userData = JSON.parse(localStorage.getItem('user') || '{}');
+  const username = userData.username || '';
+  if (!username) {
+    alert("No user logged in.");
+    return;
+  }
 
   return fetch(`http://localhost:5000/api/user/${username}/items`, {
     method: 'DELETE',
@@ -46,6 +58,7 @@ function clearHistory() {
   })
   .catch(err => console.error('Error clearing history:', err));
 }
+
 
 
 function showRegister() {
