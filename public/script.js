@@ -45,6 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
     logoutBtn.addEventListener('click', () => {
       localStorage.removeItem('user');
       document.getElementById('login-status').textContent = '';
+      document.getElementById('history').innerHTML = ''; 
       showLogin();
     });
   }
